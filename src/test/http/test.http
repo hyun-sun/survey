@@ -1,0 +1,11 @@
+POST http://localhost:8080/v1/survey
+Content-Type: application/json
+
+{
+  "id" : "test01",
+  "name" : "테스트",
+  "nation" :  "한국",
+  "zeroNothingOne" : "공무원 아님",
+  "haveChild" :  "N",
+  "taxation" : "N"
+}
