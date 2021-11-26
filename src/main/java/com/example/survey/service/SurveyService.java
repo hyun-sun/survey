@@ -4,6 +4,7 @@ import com.example.survey.controller.request.SurveyRequest;
 import com.example.survey.domain.SaveEntity;
 import org.springframework.stereotype.Service;
 
+import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +23,7 @@ public class SurveyService {
 			SurveyBase surveyBase = SurveyBase.getSurveyBase(name);
 			if(surveyBase != null) {
 				try {
-					field.setAccessible(true);
-					String value = (String) field.get(request);
+					String value = (String) new PropertyDescriptor(name, SurveyRequest.class).getReadMethod().invoke(request);
 					SaveEntity saveEntity = SaveEntity.builder()
 							.id(request.getId())
 							.name(request.getName())
